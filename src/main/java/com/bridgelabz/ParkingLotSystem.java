@@ -4,6 +4,7 @@ package com.bridgelabz;
  * @since -> 25/04/2022
  */
 public class ParkingLotSystem {
+  private static final int MAX_SIZE_OF_PARKINGLOT = 5;
   /** This program manages parking spaces for vehicles. */
   Vehicle vehicle = null; // intialising vehicle with null
 
@@ -29,5 +30,9 @@ public class ParkingLotSystem {
       return true;
     }
     return false;
+  }
+
+  public boolean checkParkingLot(Vehicle[] vehicles) {
+    return vehicles.length == MAX_SIZE_OF_PARKINGLOT;
   }
 }

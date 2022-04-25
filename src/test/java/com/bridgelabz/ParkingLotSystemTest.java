@@ -54,4 +54,29 @@ asking to unpark  vehicle should return false
     boolean isUnParked = parkingLotSystem.unParkTheVehicle(vehicle);
     Assert.assertFalse(isUnParked);
   }
+/*
+As a Parking Lot owner I want to know when
+the lot is full So that I can put out the full sign
+ */
+  @Test
+  public void givenArrayOfVehicles_WhenFull_ShouldReturnTrue() {
+    Vehicle[] vehicles = {new Vehicle("car1"),
+                          new Vehicle("car2"),
+                          new Vehicle("car3"),
+                          new Vehicle("car4"),
+                          new Vehicle("car5")};
+    boolean isFull = parkingLotSystem.checkParkingLot(vehicles);
+    Assert.assertTrue(isFull);
+  }
+
+  @Test
+  public void givenArrayOfVehicles_WhenNotFull_ShouldReturnFalse() {
+    Vehicle[] vehicles = {new Vehicle("car1"),
+            new Vehicle("car2"),
+            new Vehicle("car3"),
+            new Vehicle("car4")};
+    boolean isFull = parkingLotSystem.checkParkingLot(vehicles);
+    Assert.assertFalse(isFull);
+  }
+
 }
