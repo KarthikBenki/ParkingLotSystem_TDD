@@ -13,4 +13,15 @@ public class ParkingLotSystem {
     this.vehicle = vehicle; // parking the vehicle
     return true;
   }
+  /*
+  method to unpark the vehicle
+   */
+  public boolean unParkTheVehicle(String vehicle) {
+    if (this.vehicle == null) return false;
+    if (this.vehicle.equals(vehicle)) {
+      vehicle = null;
+      return true;
+    }
+    return false;
+  }
 }
