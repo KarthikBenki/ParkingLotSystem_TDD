@@ -24,4 +24,15 @@ public class ParkingLotSystemTest {
     boolean isUnParked = parkingLotSystem.unParkTheVehicle("BMW");
     Assert.assertTrue(isUnParked);
   }
+/*
+test to check condition of parked one vehicle
+asking to unpark different vehicle should return false
+ */
+  @Test
+  public void givenAVehicle_WhenDifferentVehicleUnParked_ShouldReturnfalse() {
+    ParkingLotSystem parkingLotSystem = new ParkingLotSystem();
+    parkingLotSystem.parkTheVehicle("BMW");
+    boolean isUnParked = parkingLotSystem.unParkTheVehicle("AUDI");
+    Assert.assertFalse(isUnParked);
+  }
 }
