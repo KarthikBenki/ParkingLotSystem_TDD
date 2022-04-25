@@ -16,7 +16,8 @@ public class ParkingLotSystemTest {
      */
   @Test
   public void givenAVehicle_WhenParked_ShouldReturnTrue() {
-    boolean isParked = parkingLotSystem.parkTheVehicle("AUDI");
+    Vehicle vehicle = new Vehicle("AUDI");
+    boolean isParked = parkingLotSystem.parkTheVehicle(vehicle);
     Assert.assertTrue(isParked);
   }
 
@@ -25,8 +26,9 @@ public class ParkingLotSystemTest {
    */
   @Test
   public void givenAVehicle_WhenUnParked_ShouldReturnTrue() {
-    parkingLotSystem.parkTheVehicle("BMW");
-    boolean isUnParked = parkingLotSystem.unParkTheVehicle("BMW");
+    Vehicle vehicle = new Vehicle("BMW");
+    parkingLotSystem.parkTheVehicle(vehicle);
+    boolean isUnParked = parkingLotSystem.unParkTheVehicle(vehicle);
     Assert.assertTrue(isUnParked);
   }
 /*
@@ -35,8 +37,10 @@ asking to unpark different vehicle should return false
  */
   @Test
   public void givenAVehicle_WhenDifferentVehicleUnParked_ShouldReturnfalse() {
-    parkingLotSystem.parkTheVehicle("BMW");
-    boolean isUnParked = parkingLotSystem.unParkTheVehicle("AUDI");
+    Vehicle vehicle = new Vehicle("BMW");
+    Vehicle vehicle1 = new Vehicle("AUDI");
+    parkingLotSystem.parkTheVehicle(vehicle);
+    boolean isUnParked = parkingLotSystem.unParkTheVehicle(vehicle1);
     Assert.assertFalse(isUnParked);
   }
 
@@ -46,7 +50,8 @@ asking to unpark  vehicle should return false
  */
   @Test
   public void givenAVehicleNotParked_WhenUnParked_ShouldReturnfalse() {
-    boolean isUnParked = parkingLotSystem.unParkTheVehicle("AUDI");
+    Vehicle vehicle = new Vehicle("BMW");
+    boolean isUnParked = parkingLotSystem.unParkTheVehicle(vehicle);
     Assert.assertFalse(isUnParked);
   }
 }
