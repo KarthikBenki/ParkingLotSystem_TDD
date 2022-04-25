@@ -35,4 +35,15 @@ asking to unpark different vehicle should return false
     boolean isUnParked = parkingLotSystem.unParkTheVehicle("AUDI");
     Assert.assertFalse(isUnParked);
   }
+
+  /*
+test to check condition of parked no vehicle
+asking to unpark  vehicle should return false
+ */
+  @Test
+  public void givenAVehicleNotParked_WhenUnParked_ShouldReturnfalse() {
+    ParkingLotSystem parkingLotSystem = new ParkingLotSystem();
+    boolean isUnParked = parkingLotSystem.unParkTheVehicle("AUDI");
+    Assert.assertFalse(isUnParked);
+  }
 }
