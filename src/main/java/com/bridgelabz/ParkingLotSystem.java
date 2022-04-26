@@ -12,11 +12,10 @@ public class ParkingLotSystem {
    * @param vehicle -> Required to park the given vehicle.
    * @return -> Returns boolean by checking if the given vehicle is already parked.
    */
-  public boolean parkTheVehicle(Vehicle vehicle) {
+  public void parkTheVehicle(Vehicle vehicle) throws ParkingLotException {
     if (this.vehicle != null) // checking for empty slot
-    return false;
+    throw new ParkingLotException("Parking Lot is Full");
     this.vehicle = vehicle; // parking the vehicle
-    return true;
   }
 
   /**
@@ -34,5 +33,10 @@ public class ParkingLotSystem {
 
   public boolean checkParkingLot(Vehicle[] vehicles) {
     return vehicles.length == MAX_SIZE_OF_PARKINGLOT;
+  }
+
+  public boolean isVehicleParked(Vehicle vehicle) {
+    if(this.vehicle.equals(vehicle)) return true;
+    return false;
   }
 }
