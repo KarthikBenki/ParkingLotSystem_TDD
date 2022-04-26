@@ -9,8 +9,9 @@ public class ParkingLotSystem {
   Vehicle vehicle = null; // intialising vehicle with null
 
   /**
-   * @param vehicle -> Required to park the given vehicle.
-   * @return -> Returns boolean by checking if the given vehicle is already parked.
+   *
+   * @param vehicle
+   * @throws ParkingLotException if parking lot is full
    */
   public void parkTheVehicle(Vehicle vehicle) throws ParkingLotException {
     if (this.vehicle != null) // checking for empty slot
@@ -19,8 +20,19 @@ public class ParkingLotSystem {
   }
 
   /**
-   * @param vehicle -> Required to un-park the given vehicle.
-   * @return -> Returns boolean by checking if the given vehicle exists.
+   *
+   * @param vehicle
+   * @return true if vehicle is parked
+   */
+  public boolean isVehicleParked(Vehicle vehicle) {
+    if (this.vehicle.equals(vehicle)) return true;
+    return false;
+  }
+
+  /**
+   *
+   * @param vehicle
+   * @throws ParkingLotException when parking lot is empty and asking for different vehicle
    */
   public void unParkTheVehicle(Vehicle vehicle) throws ParkingLotException {
     if (this.vehicle == null) throw new ParkingLotException("ParkingLot Is Empty");
@@ -31,18 +43,21 @@ public class ParkingLotSystem {
     throw new ParkingLotException("Asking for Different Vehicle");
   }
 
+  /**
+   *
+   * @param vehicle
+   * @return true if vehicle is unparked
+   */
+  public boolean isVehicleUnParked(Vehicle vehicle) {
+    if (this.vehicle == null) return true;
+    return false;
+  }
+
   public boolean checkParkingLot(Vehicle[] vehicles) {
     return vehicles.length == MAX_SIZE_OF_PARKINGLOT;
   }
 
-  public boolean isVehicleParked(Vehicle vehicle) {
-    if(this.vehicle.equals(vehicle)) return true;
-    return false;
-  }
 
-  public boolean isVehicleUnParked(Vehicle vehicle) {
-    if(this.vehicle==null)
-    return true;
-    return false;
-  }
+
+
 }
