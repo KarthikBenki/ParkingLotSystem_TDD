@@ -36,8 +36,9 @@ public class ParkingLotSystemTest {
   public void givenAVehicle_WhenAlreadyParked_WhenTryToPark_ShouldThrowException() {
     try {
       Vehicle vehicle = new Vehicle("1","AUDI");
+      Vehicle vehicle1 = new Vehicle("2","BMW");
       parkingLotSystem.parkTheVehicle(vehicle);
-      parkingLotSystem.parkTheVehicle(new Vehicle("2","BMW"));
+      parkingLotSystem.parkTheVehicle(vehicle1);
     } catch (ParkingLotException e) {
       Assert.assertEquals("Parking Lot is Full", e.getMessage());
       e.printStackTrace();
