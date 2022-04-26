@@ -15,6 +15,7 @@ public class ParkingLotSystem {
   List<IParkingObserver> observers = new ArrayList<>();
   /** This program manages parking spaces for vehicles. */
   Vehicle vehicle = null; // intialising vehicle with null
+  Owner owner = new Owner();//creating owner object
 
   /**
    * @param vehicle
@@ -24,7 +25,8 @@ public class ParkingLotSystem {
     if (parkingLotMap.size() <= MAX_SIZE_OF_PARKINGLOT) parkingLotMap.put(vehicle.id, vehicle);
     //    if (this.vehicle != null) // checking for empty slot
     if (parkingLotMap.size() == MAX_SIZE_OF_PARKINGLOT) {
-      notifyObservers("Parking Lot is Full");
+//      notifyObservers("Parking Lot is Full");
+      owner.update("Parking Lot is Full");
       throw new ParkingLotException("Parking Lot is Full");
     }
     //    this.vehicle = vehicle; // parking the vehicle
