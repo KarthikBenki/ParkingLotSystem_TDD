@@ -17,6 +17,7 @@ public class ParkingLotSystem {
   Vehicle vehicle = null; // intialising vehicle with null
 
   Owner owner = new Owner(); // creating owner object
+  SecurityPersonal securityPersonal = new SecurityPersonal(); // creating Security personel object
 
   /**
    * @param vehicle
@@ -26,6 +27,7 @@ public class ParkingLotSystem {
     if (parkingLotMap.size() <= MAX_SIZE_OF_PARKINGLOT) parkingLotMap.put(vehicle.id, vehicle);
     if (parkingLotMap.size() == MAX_SIZE_OF_PARKINGLOT) {
       owner.update("Parking Lot is Full");
+      securityPersonal.update("Parking Lot is Full");
       throw new ParkingLotException("Parking Lot is Full");
     }
   }
