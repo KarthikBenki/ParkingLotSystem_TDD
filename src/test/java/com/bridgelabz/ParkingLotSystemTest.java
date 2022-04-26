@@ -19,7 +19,7 @@ public class ParkingLotSystemTest {
   @Test
   public void givenAVehicle_WhenParked_ShouldReturnTrue() {
     try {
-      Vehicle vehicle = new Vehicle("AUDI");
+      Vehicle vehicle = new Vehicle("1","AUDI");
       parkingLotSystem.parkTheVehicle(vehicle);
       boolean isParked = parkingLotSystem.isVehicleParked(vehicle);
       Assert.assertTrue(isParked);
@@ -35,9 +35,9 @@ public class ParkingLotSystemTest {
   @Test
   public void givenAVehicle_WhenAlreadyParked_WhenTryToPark_ShouldThrowException() {
     try {
-      Vehicle vehicle = new Vehicle("AUDI");
+      Vehicle vehicle = new Vehicle("1","AUDI");
       parkingLotSystem.parkTheVehicle(vehicle);
-      parkingLotSystem.parkTheVehicle(new Vehicle("BMW"));
+      parkingLotSystem.parkTheVehicle(new Vehicle("2","BMW"));
     } catch (ParkingLotException e) {
       Assert.assertEquals("Parking Lot is Full", e.getMessage());
       e.printStackTrace();
@@ -51,7 +51,7 @@ public class ParkingLotSystemTest {
   @Test
   public void givenAVehicle_WhenUnParked_ShouldReturnTrue() {
     try {
-      Vehicle vehicle = new Vehicle("BMW");
+      Vehicle vehicle = new Vehicle("1","AUDI");
       parkingLotSystem.parkTheVehicle(vehicle);
       parkingLotSystem.unParkTheVehicle(vehicle);
       boolean isUnParked = parkingLotSystem.isVehicleUnParked(vehicle);
@@ -70,8 +70,8 @@ public class ParkingLotSystemTest {
   public void givenAVehicle_WhenDifferentVehicleUnParked_ShouldThrowException() {
 
     try {
-      Vehicle vehicle = new Vehicle("BMW");
-      Vehicle vehicle1 = new Vehicle("AUDI");
+      Vehicle vehicle = new Vehicle("1","AUDI");
+      Vehicle vehicle1 = new Vehicle("2","BMW");
       parkingLotSystem.parkTheVehicle(vehicle);
       parkingLotSystem.unParkTheVehicle(vehicle1);
     } catch (ParkingLotException e) {
@@ -87,7 +87,7 @@ public class ParkingLotSystemTest {
   @Test
   public void givenAVehicleNotParked_WhenUnParked_ShouldThrowAnException() {
     try {
-      Vehicle vehicle = new Vehicle("BMW");
+      Vehicle vehicle = new Vehicle("1","bmw");
       parkingLotSystem.unParkTheVehicle(vehicle);
     } catch (ParkingLotException e) {
       Assert.assertEquals("ParkingLot Is Empty", e.getMessage());
@@ -95,32 +95,9 @@ public class ParkingLotSystemTest {
     }
   }
 
-  /*
-  As a Parking Lot owner I want to know when
-  the lot is full So that I can put out the full sign
-   */
-  @Test
-  public void givenArrayOfVehicles_WhenFull_ShouldReturnTrue() {
-    Vehicle[] vehicles = {
-      new Vehicle("car1"),
-      new Vehicle("car2"),
-      new Vehicle("car3"),
-      new Vehicle("car4"),
-      new Vehicle("car5")
-    };
-    boolean isFull = parkingLotSystem.checkParkingLot(vehicles);
-    Assert.assertTrue(isFull);
-  }
 
-  /*
-  Test case to check if the parking lot is empty
-   */
-  @Test
-  public void givenArrayOfVehicles_WhenNotFull_ShouldReturnFalse() {
-    Vehicle[] vehicles = {
-      new Vehicle("car1"), new Vehicle("car2"), new Vehicle("car3"), new Vehicle("car4")
-    };
-    boolean isFull = parkingLotSystem.checkParkingLot(vehicles);
-    Assert.assertFalse(isFull);
-  }
+
+
+
+
 }
