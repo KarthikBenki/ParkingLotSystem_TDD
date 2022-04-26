@@ -56,11 +56,12 @@ public class ParkingLotSystem {
    */
   public void unParkTheVehicle(Vehicle vehicle) throws ParkingLotException {
     if (this.parkingLotMap.size() == 0) {
-      notifyObservers("ParkingLot Is Empty");
+      owner.update("ParkingLot Is Empty");
       throw new ParkingLotException("ParkingLot Is Empty");
     }
     if (this.parkingLotMap.containsValue(vehicle)) {
       this.parkingLotMap.remove(vehicle.id);
+      owner.update("Parking slot has space available");
       return;
     }
     throw new ParkingLotException("Asking for Different Vehicle");
