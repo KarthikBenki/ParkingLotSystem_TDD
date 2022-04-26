@@ -21,22 +21,20 @@ public class ParkingLotSystem {
    * @throws ParkingLotException if parking lot is full
    */
   public void parkTheVehicle(Vehicle vehicle) throws ParkingLotException {
-    if (parkingLotMap.size() <= MAX_SIZE_OF_PARKINGLOT)
-      parkingLotMap.put(vehicle.id, vehicle);
+    if (parkingLotMap.size() <= MAX_SIZE_OF_PARKINGLOT) parkingLotMap.put(vehicle.id, vehicle);
     //    if (this.vehicle != null) // checking for empty slot
     if (parkingLotMap.size() == MAX_SIZE_OF_PARKINGLOT) {
       notifyObservers("Parking Lot is Full");
       throw new ParkingLotException("Parking Lot is Full");
     }
-//    this.vehicle = vehicle; // parking the vehicle
+    //    this.vehicle = vehicle; // parking the vehicle
   }
 
   /**
-   *
    * @param //updating message to owner and security
    */
   private void notifyObservers(String message) {
-    for(IParkingObserver list :observers){
+    for (IParkingObserver list : observers) {
       list.update(message);
     }
   }
@@ -46,8 +44,8 @@ public class ParkingLotSystem {
    * @return true if vehicle is parked
    */
   public boolean isVehicleParked(Vehicle vehicle) {
-//    if (this.vehicle.equals(vehicle)) return true;
-    if(this.parkingLotMap.containsValue(vehicle)) return true;
+    //    if (this.vehicle.equals(vehicle)) return true;
+    if (this.parkingLotMap.containsValue(vehicle)) return true;
     return false;
   }
 
@@ -56,9 +54,17 @@ public class ParkingLotSystem {
    * @throws ParkingLotException when parking lot is empty and asking for different vehicle
    */
   public void unParkTheVehicle(Vehicle vehicle) throws ParkingLotException {
-    if (this.vehicle == null) throw new ParkingLotException("ParkingLot Is Empty");
-    if (this.vehicle.equals(vehicle)) {
-      this.vehicle = null;
+    //    if (this.vehicle == null) throw new ParkingLotException("ParkingLot Is Empty");
+    if (this.parkingLotMap.size() == 0){
+      notifyObservers("ParkingLot Is Empty");
+      throw new ParkingLotException("ParkingLot Is Empty");
+    }
+    //    if (this.vehicle.equals(vehicle)) {
+    //      this.vehicle = null;
+    //      return;
+    //    }
+    if (this.parkingLotMap.containsValue(vehicle)) {
+      this.parkingLotMap.remove(vehicle.id);
       return;
     }
     throw new ParkingLotException("Asking for Different Vehicle");
@@ -69,11 +75,10 @@ public class ParkingLotSystem {
    * @return true if vehicle is unparked
    */
   public boolean isVehicleUnParked(Vehicle vehicle) {
-    if (this.vehicle == null) return true;
+//    if (this.vehicle == null) return true;
+    if(!this.parkingLotMap.containsValue(vehicle)) return true;
     return false;
   }
 
-  public boolean checkParkingLot(Vehicle[] vehicles) {
-    return vehicles.length == MAX_SIZE_OF_PARKINGLOT;
-  }
+
 }
