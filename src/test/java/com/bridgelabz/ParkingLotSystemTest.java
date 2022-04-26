@@ -27,7 +27,20 @@ public class ParkingLotSystemTest {
             Assert.assertEquals("Parking Lot is Full",e.getMessage());
             e.printStackTrace();
         }
+    }
 
+    @Test
+    public void givenAVehicle_WhenAlreadyParked_WhenTryToPark_ShouldThrowException() {
+        try {
+            Vehicle vehicle = new Vehicle("AUDI");
+            parkingLotSystem.parkTheVehicle(vehicle);
+            parkingLotSystem.parkTheVehicle(new Vehicle("BMW"));
+            boolean isParked = parkingLotSystem.isVehicleParked(vehicle);
+            Assert.assertTrue(isParked);
+        } catch (ParkingLotException e) {
+            Assert.assertEquals("Parking Lot is Full",e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     /*
