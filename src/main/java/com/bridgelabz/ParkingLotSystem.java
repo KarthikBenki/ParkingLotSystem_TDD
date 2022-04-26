@@ -22,13 +22,13 @@ public class ParkingLotSystem {
    * @param vehicle -> Required to un-park the given vehicle.
    * @return -> Returns boolean by checking if the given vehicle exists.
    */
-  public boolean unParkTheVehicle(Vehicle vehicle) {
-    if (this.vehicle == null) return false;
+  public void unParkTheVehicle(Vehicle vehicle) throws ParkingLotException {
+    if (this.vehicle == null) throw new ParkingLotException("ParkingLot Is Empty");
     if (this.vehicle.equals(vehicle)) {
-      vehicle = null;
-      return true;
+      this.vehicle = null;
+      return;
     }
-    return false;
+    throw new ParkingLotException("Asking for Different Vehicle");
   }
 
   public boolean checkParkingLot(Vehicle[] vehicles) {
@@ -37,6 +37,12 @@ public class ParkingLotSystem {
 
   public boolean isVehicleParked(Vehicle vehicle) {
     if(this.vehicle.equals(vehicle)) return true;
+    return false;
+  }
+
+  public boolean isVehicleUnParked(Vehicle vehicle) {
+    if(this.vehicle==null)
+    return true;
     return false;
   }
 }
