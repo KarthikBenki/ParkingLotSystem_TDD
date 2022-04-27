@@ -1,7 +1,7 @@
 package com.bridgelabz;
 
 public class SecurityPersonal implements IParkingObserver{
-    private String status;
+    private static String status;
 
     @Override
     public void update(String message) {

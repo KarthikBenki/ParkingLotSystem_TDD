@@ -24,11 +24,11 @@ public class ParkingLotSystem {
    * @throws ParkingLotException if parking lot is full
    */
   public void parkTheVehicle(Vehicle vehicle) throws ParkingLotException {
+    if(parkingLotMap.size() == MAX_SIZE_OF_PARKINGLOT) throw new ParkingLotException("Parking Lot is Full");
     if (parkingLotMap.size() <= MAX_SIZE_OF_PARKINGLOT) parkingLotMap.put(vehicle.id, vehicle);
     if (parkingLotMap.size() == MAX_SIZE_OF_PARKINGLOT) {
       owner.update("Parking Lot is Full");
       securityPersonal.update("Parking Lot is Full");
-      throw new ParkingLotException("Parking Lot is Full");
     }
   }
 

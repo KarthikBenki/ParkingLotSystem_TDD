@@ -103,11 +103,11 @@ test case to give parking lot is full to owner
     try{
       parkingLotSystem.parkTheVehicle(new Vehicle("1","bmw"));
       parkingLotSystem.parkTheVehicle(new Vehicle("2","bmw"));
-    }catch(Exception e){
       Owner owner = new Owner();
-      owner.update(e.getMessage());
       String getStatus = owner.getStatus();
       Assert.assertEquals("Parking Lot is Full",getStatus);
+    }catch(Exception e){
+      e.printStackTrace();
     }
   }
 
@@ -119,11 +119,11 @@ test case to give parking lot is full to owner
     try{
       parkingLotSystem.parkTheVehicle(new Vehicle("1","bmw"));
       parkingLotSystem.parkTheVehicle(new Vehicle("2","bmw"));
-    }catch(Exception e){
       SecurityPersonal securityPersonal = new SecurityPersonal();
-      securityPersonal.update(e.getMessage());
       String getStatus = securityPersonal.getStatus();
       Assert.assertEquals("Parking Lot is Full",getStatus);
+    }catch(Exception e){
+      e.printStackTrace();
     }
   }
 
