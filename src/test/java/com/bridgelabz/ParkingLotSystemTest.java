@@ -96,9 +96,16 @@ public class ParkingLotSystemTest {
     }
   }
 
-
-
-
-
-
+  @Test
+  public void givenAVehicle_WhenFullMessageGotByOwner_ShouldReturnTrue() {
+    try{
+      parkingLotSystem.parkTheVehicle(new Vehicle("1","bmw"));
+      parkingLotSystem.parkTheVehicle(new Vehicle("2","bmw"));
+    }catch(Exception e){
+      Owner owner = new Owner();
+      owner.update(e.getMessage());
+      String getStatus = owner.getStatus();
+      Assert.assertEquals("Parking Lot is Full",getStatus);
+    }
+  }
 }
