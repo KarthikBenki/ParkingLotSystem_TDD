@@ -126,4 +126,21 @@ test case to give parking lot is full to owner
       Assert.assertEquals("Parking Lot is Full",getStatus);
     }
   }
+
+  /**
+   * test case to give parking lot full message to Security personnel
+   */
+  @Test
+  public void givenAVehicle_WhenSpaceAvailableMessageGotToOwner_ShouldReturnTrue() {
+    try{
+      Vehicle vehicle = new Vehicle("1","bmw");
+      parkingLotSystem.parkTheVehicle(vehicle);
+      parkingLotSystem.unParkTheVehicle(vehicle);
+      Owner owner = new Owner();
+      String getStatus = owner.getStatus();
+      Assert.assertEquals("Parking slot has space available",getStatus);
+    }catch(Exception e){
+      e.printStackTrace();
+    }
+  }
 }
