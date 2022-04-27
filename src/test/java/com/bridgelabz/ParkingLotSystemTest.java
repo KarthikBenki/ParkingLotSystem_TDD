@@ -95,7 +95,9 @@ public class ParkingLotSystemTest {
       e.printStackTrace();
     }
   }
-
+/*
+test case to give parking lot is full to owner
+ */
   @Test
   public void givenAVehicle_WhenFullMessageGotByOwner_ShouldReturnTrue() {
     try{
@@ -105,6 +107,22 @@ public class ParkingLotSystemTest {
       Owner owner = new Owner();
       owner.update(e.getMessage());
       String getStatus = owner.getStatus();
+      Assert.assertEquals("Parking Lot is Full",getStatus);
+    }
+  }
+
+  /**
+   * test case to give parking lot full message to Security personnel
+   */
+  @Test
+  public void givenAVehicle_WhenFullMessageGotToSecurityPersonnel_ShouldReturnTrue() {
+    try{
+      parkingLotSystem.parkTheVehicle(new Vehicle("1","bmw"));
+      parkingLotSystem.parkTheVehicle(new Vehicle("2","bmw"));
+    }catch(Exception e){
+      SecurityPersonal securityPersonal = new SecurityPersonal();
+      securityPersonal.update(e.getMessage());
+      String getStatus = securityPersonal.getStatus();
       Assert.assertEquals("Parking Lot is Full",getStatus);
     }
   }
